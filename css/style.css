@@ -1,0 +1,33 @@
+body{
+    background: hsla(277, 75%, 84%, 1);
+
+background: linear-gradient(90deg, hsla(277, 75%, 84%, 1) 0%, hsla(297, 50%, 51%, 1) 100%);
+
+background: -moz-linear-gradient(90deg, hsla(277, 75%, 84%, 1) 0%, hsla(297, 50%, 51%, 1) 100%);
+
+background: -webkit-linear-gradient(90deg, hsla(277, 75%, 84%, 1) 0%, hsla(297, 50%, 51%, 1) 100%);
+
+filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#DEB8F5", endColorstr="#BA42C0", GradientType=1 );
+}
+li{
+    list-style: none;
+}
+.elem{
+    height: 1fr;
+    list-style: none;
+    font-size: 10px;
+    text-align: center;
+}
+.elem:nth-child(n){
+    background-color: pink;
+}
+
+.elem:nth-child(2n){
+    background-color: aqua;
+}
+.container{
+    display: grid ;
+    grid-template-columns: repeat(3, 1fr) ;
+    grid-template-rows: repeat(3, 1fr);
+    
+}
