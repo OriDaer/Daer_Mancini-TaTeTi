@@ -1,4 +1,6 @@
 //anuncio inicio 
+let result; 
+let valor;
 const swalWithBootstrapButtons = Swal.mixin({
   customClass: {
     confirmButton: 'btn btn-success',
@@ -33,21 +35,30 @@ text: "Seleccione una opcion",
     )
   }
 })
-
 let figuras = ['X', '!'];
-let lugar ;
-let inicial = 0;
-let celda=[1,2,3,4,5,6,7,8,9];
-while(indice<=celda.length){
-  let indice=0;
-  lugar = document.getElementById(celda[indice]); 
-
-}
-let indice=0; 
+let val=0;
+let index=0;
 //Recuperar la primer celda
-
-
-//Agregar a esa celda un evento de escucha click
-celda1.addEventListener('click', () => {
-    celda1.innerHTML = figuras[inicial];
-});
+while(val<10&&figuras[index]){
+  if(index===0){
+    val++;
+    console.log(val);
+      let celda = document.getElementById(val);
+    //Agregar a esa celda un evento de escucha click
+    celda.addEventListener('click', () => {
+        celda.innerHTML = figuras[index];
+    })
+        index++;
+    
+    }
+    else{
+      val++;
+      console.log(val);
+        let celda = document.getElementById(val);
+      //Agregar a esa celda un evento de escucha click
+      celda.addEventListener('click', () => {
+          celda.innerHTML = figuras[index];
+            index--;
+      })
+    }
+}
