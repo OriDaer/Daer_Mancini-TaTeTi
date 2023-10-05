@@ -24,41 +24,77 @@ text: "Seleccione una opcion",
       'Has elegido exclamacion',
       'warning',
     )
-  } else if (
-    /* Read more about handling dismissals below */
-    result.dismiss === Swal.DismissReason.cancel
-  ) {
+    let figuras = ['X', '!'];
+    let index = 1;
+    let lugar = [null, null, null, null, null, null, null, null, null]; // Array del lugar
+    let ganador=false;
+
+    function verifGanador() {
+        const ganar = [
+            [0, 1, 2], [3, 4, 5], [6, 7, 8], // filas
+            [0, 3, 6], [1, 4, 7], [2, 5, 8], // colum
+            [0, 4, 8], [2, 4, 6] // diag
+        ];
+    
+        for (let i = 0; i < ganar.length; i++) {
+            const [u, d, t] = ganar[i];
+            if (lugar[u] && lugar[u] === lugar[d] && lugar[u] === lugar[t]) {
+                console.log('ganaste');
+                ganador=true;
+                break;
+            }
+        }
+    }
+    
+    for (let val = 1; val <= 9; val++) {
+        let celda = document.getElementById(val);
+        celda.addEventListener('click', () => {
+            if (!ganador && lugar[val - 1] === null) { // Verificar si la celda está vacía antes de asignar un valor
+                lugar[val - 1] = figuras[index]; // Actualizar el estado del lugar con el símbolo actual
+                celda.innerHTML = figuras[index]; // Establecer el contenido de la celda como la figura actual
+                index = (index + 1) % figuras.length; // Alterna 'X' y '!'
+                verifGanador();
+            }
+        });
+    }
+    }
+  else if (result.dismiss === Swal.DismissReason.cancel) {
     swalWithBootstrapButtons.fire(
       'Jugador 1',
       'Has elegido cruz',
       'error'
     )
-  }
-})
-let figuras = ['X', '!'];
-let val=0;
-let index=0;
-//Recuperar la primer celda
-while(val<10&&figuras[index]){
-  if(index===0){
-    val++;
-    console.log(val);
-      let celda = document.getElementById(val);
-    //Agregar a esa celda un evento de escucha click
-    celda.addEventListener('click', () => {
-        celda.innerHTML = figuras[index];
-    })
-        index++;
+    let figuras = ['X', '!'];
+    let index = 0;
+    let lugar = [null, null, null, null, null, null, null, null, null]; // Array del lugar
+    let ganador=false;
+    function verifGanador() {
+        const ganar = [
+            [0, 1, 2], [3, 4, 5], [6, 7, 8], // filas
+            [0, 3, 6], [1, 4, 7], [2, 5, 8], // colum
+            [0, 4, 8], [2, 4, 6] // diag
+        ];
     
+        for (let i = 0; i < ganar.length; i++) {
+            const [u, d, t] = ganar[i];
+            if (lugar[u] && lugar[u] === lugar[d] && lugar[u] === lugar[t]) {
+                console.log('ganaste');
+                ganador=true;
+                break;
+            }
+        }
     }
-    else{
-      val++;
-      console.log(val);
+    
+    for (let val = 1; val <= 9; val++) {
         let celda = document.getElementById(val);
-      //Agregar a esa celda un evento de escucha click
-      celda.addEventListener('click', () => {
-          celda.innerHTML = figuras[index];
-            index--;
-      })
+        celda.addEventListener('click', () => {
+            if (!ganador && lugar[val - 1] === null) { // Verificar si la celda está vacía antes de asignar un valor
+                lugar[val - 1] = figuras[index]; // Actualizar el estado del lugar con el símbolo actual
+                celda.innerHTML = figuras[index]; // Establecer el contenido de la celda como la figura actual
+                index = (index + 1) % figuras.length; // Alterna 'X' y '!'
+                verifGanador();
+            }
+        });
     }
-}
+  }
+});
