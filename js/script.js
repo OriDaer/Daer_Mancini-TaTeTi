@@ -73,6 +73,7 @@ let puntos = 0;
                   if (!ganadorX && lugar[val - 1] === "") { // Verificar si la celda está vacía antes de asignar un valor
                       lugar[val - 1] = figuras[index]; // Actualizar el estado del lugar con el símbolo actual
                       celda.innerHTML = figuras[index]; // Establecer el contenido de la celda como la figura actual
+                      verifGanador();
                       index = (index + 1) % figuras.length; // Alterna 'X' y '!'
                     
                   } 
@@ -86,7 +87,57 @@ let puntos = 0;
           }
         }
           }
-          verifGanador();
+          
   }
 });
+/*  let figuras = ['X', '!'];
+        let index = 0;
+        let lugar = ["", "", "", "", "", "", "", "", ""];
+        let ganadorX = false;
+        let puntosX = 0;
 
+        function reiniciarJuego() {
+            lugar.fill("");
+            ganadorX = false;
+            for (let val = 1; val <= 9; val++) {
+                let celda = document.getElementById(val);
+                celda.innerHTML = "";
+            }
+        }
+
+        function verificarGanador() {
+            const ganar = [
+                [0, 1, 2], [3, 4, 5], [6, 7, 8], // filas
+                [0, 3, 6], [1, 4, 7], [2, 5, 8], // columnas
+                [0, 4, 8], [2, 4, 6] // diagonales
+            ];
+
+            for (let i = 0; i < ganar.length; i++) {
+                const [u, d, t] = ganar[i];
+                if (lugar[u] && lugar[u] === lugar[d] && lugar[u] === lugar[t]) {
+                    console.log('ganasteX');
+                    ganadorX = true;
+                    puntosX++;
+                    console.log(puntosX);
+                    break;
+                }
+            }
+        }
+
+        function manejarClick(val) {
+            let celda = document.getElementById(val);
+            if (!ganadorX && lugar[val - 1] === "") { 
+                lugar[val - 1] = figuras[index]; 
+                celda.innerHTML = figuras[index];
+                verificarGanador();
+                index = (index + 1) % figuras.length;
+            }
+        }
+
+        for (let val = 1; val <= 9; val++) {
+            let celda = document.getElementById(val);
+            celda.addEventListener('click', () => manejarClick(val));
+        }
+
+        let boton = document.getElementById("boton");
+        boton.addEventListener('click', reiniciarJuego);*/
